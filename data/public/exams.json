@@ -1,0 +1,385 @@
+[
+  {
+    "id": "exam-1789630148989",
+    "code": "#5b8d-1",
+    "title": "Đố vui Khoa học & Vũ trụ",
+    "subject": "Khoa học tự nhiên",
+    "author": "Rey",
+    "timePerQ": 15,
+    "pointsPerQ": 100,
+    "desc": "Khám phá kiến thức tự nhiên, hệ mặt trời và thế giới sinh vật quanh ta với các câu hỏi tương tác sinh động.",
+    "questions": [
+      {
+        "text": "Hành tinh nào gần Mặt Trời nhất trong Hệ Mặt Trời?",
+        "choices": [
+          "Sao Kim",
+          "Sao Thủy",
+          "Trái Đất",
+          "Sao Hỏa"
+        ],
+        "correct": 1
+      },
+      {
+        "text": "Khí nào chiếm tỉ lệ cao nhất trong khí quyển Trái Đất?",
+        "choices": [
+          "Oxy",
+          "Cacbonic",
+          "Nitơ",
+          "Hydro"
+        ],
+        "correct": 2
+      },
+      {
+        "text": "Loài chim nào có khả năng bơi lội giỏi nhưng không biết bay?",
+        "choices": [
+          "Đà điểu",
+          "Chim cánh cụt",
+          "Vẹt",
+          "Hải âu"
+        ],
+        "correct": 1
+      },
+      {
+        "text": "Chất lỏng nào chiếm khoảng 70% bề mặt Trái Đất?",
+        "choices": [
+          "Dầu mỏ",
+          "Nước",
+          "Dung nham",
+          "Cồn"
+        ],
+        "correct": 1
+      },
+      {
+        "text": "2 nguyên tố cấu tạo nên phân tử nước là?",
+        "choices": [
+          "H và N",
+          "P và N",
+          "O và S",
+          "H và O"
+        ],
+        "correct": 0
+      }
+    ],
+    "parentCode": "#5b8d",
+    "createdAt": "17/9/2026",
+    "updatedAt": "17/9/2026",
+    "sharedBy": "Doanh",
+    "sharedAt": "17/9/2026",
+    "copiesIssued": 1
+  },
+  {
+    "id": "public-1",
+    "code": "#e1a9",
+    "title": "Đề khởi động lớp học (Mặc định)",
+    "subject": "Khởi động",
+    "author": "Hệ thống Mini Quiz",
+    "timePerQ": 15,
+    "pointsPerQ": 100,
+    "desc": "Bộ 3 câu hỏi vui nhộn khởi động đầu giờ học để kích hoạt tư duy và sự hào hứng của học sinh.",
+    "copiesIssued": 0,
+    "questions": [
+      {
+        "text": "Con chó có mấy chân?",
+        "choices": [
+          "3",
+          "2",
+          "4",
+          "5"
+        ],
+        "correct": 2
+      },
+      {
+        "text": "2 + 2 = ?",
+        "choices": [
+          "2",
+          "5",
+          "4",
+          "8"
+        ],
+        "correct": 2
+      },
+      {
+        "text": "Con nào biết bay?",
+        "choices": [
+          "Heo",
+          "Chó",
+          "Cú",
+          "Bò"
+        ],
+        "correct": 2
+      }
+    ]
+  },
+  {
+    "id": "public-2",
+    "code": "#5b8d",
+    "title": "Đố vui Khoa học & Vũ trụ",
+    "subject": "Khoa học tự nhiên",
+    "author": "Hệ thống Mini Quiz",
+    "timePerQ": 15,
+    "pointsPerQ": 100,
+    "desc": "Khám phá kiến thức tự nhiên, hệ mặt trời và thế giới sinh vật quanh ta với các câu hỏi tương tác sinh động.",
+    "copiesIssued": 1,
+    "questions": [
+      {
+        "text": "Hành tinh nào gần Mặt Trời nhất trong Hệ Mặt Trời?",
+        "choices": [
+          "Sao Kim",
+          "Sao Thủy",
+          "Trái Đất",
+          "Sao Hỏa"
+        ],
+        "correct": 1
+      },
+      {
+        "text": "Khí nào chiếm tỉ lệ cao nhất trong khí quyển Trái Đất?",
+        "choices": [
+          "Oxy",
+          "Cacbonic",
+          "Nitơ",
+          "Hydro"
+        ],
+        "correct": 2
+      },
+      {
+        "text": "Loài chim nào có khả năng bơi lội giỏi nhưng không biết bay?",
+        "choices": [
+          "Đà điểu",
+          "Chim cánh cụt",
+          "Vẹt",
+          "Hải âu"
+        ],
+        "correct": 1
+      },
+      {
+        "text": "Chất lỏng nào chiếm khoảng 70% bề mặt Trái Đất?",
+        "choices": [
+          "Dầu mỏ",
+          "Nước",
+          "Dung nham",
+          "Cồn"
+        ],
+        "correct": 1
+      }
+    ]
+  },
+  {
+    "id": "public-3",
+    "code": "#9f1c",
+    "title": "Toán học & Tư duy logic nhanh",
+    "subject": "Toán học",
+    "author": "Hệ thống Mini Quiz",
+    "timePerQ": 20,
+    "pointsPerQ": 100,
+    "desc": "Rèn luyện khả năng tính nhẩm nhanh và tư duy hình học, quy luật số học cho học sinh.",
+    "copiesIssued": 4,
+    "questions": [
+      {
+        "text": "Kết quả của phép tính: 15 x 4 + 10 là bao nhiêu?",
+        "choices": [
+          "60",
+          "70",
+          "50",
+          "80"
+        ],
+        "correct": 1
+      },
+      {
+        "text": "Số tiếp theo trong dãy số quy luật: 2, 4, 8, 16, ? là:",
+        "choices": [
+          "24",
+          "30",
+          "32",
+          "36"
+        ],
+        "correct": 2
+      },
+      {
+        "text": "Tổng số đo 3 góc trong một tam giác bằng bao nhiêu độ?",
+        "choices": [
+          "90°",
+          "180°",
+          "270°",
+          "360°"
+        ],
+        "correct": 1
+      },
+      {
+        "text": "Một hình vuông có cạnh 6cm. Diện tích của hình vuông đó là:",
+        "choices": [
+          "24 cm²",
+          "30 cm²",
+          "36 cm²",
+          "40 cm²"
+        ],
+        "correct": 2
+      }
+    ]
+  },
+  {
+    "id": "public-4",
+    "code": "#3c6e",
+    "title": "Tiếng Anh giao tiếp & Từ vựng cơ bản",
+    "subject": "Tiếng Anh",
+    "author": "Hệ thống Mini Quiz",
+    "timePerQ": 15,
+    "pointsPerQ": 100,
+    "desc": "Kiểm tra vốn từ vựng thông dụng, phản xạ đối đáp và ngữ pháp cơ bản cho học sinh.",
+    "copiesIssued": 2,
+    "questions": [
+      {
+        "text": "What is the opposite of \"Hot\"?",
+        "choices": [
+          "Warm",
+          "Cold",
+          "Cool",
+          "Dry"
+        ],
+        "correct": 1
+      },
+      {
+        "text": "Choose the correct word: \"She ___ to school every day.\"",
+        "choices": [
+          "go",
+          "goes",
+          "going",
+          "went"
+        ],
+        "correct": 1
+      },
+      {
+        "text": "Which animal is known as \"Man's best friend\"?",
+        "choices": [
+          "Cat",
+          "Dog",
+          "Horse",
+          "Rabbit"
+        ],
+        "correct": 1
+      },
+      {
+        "text": "How many days are there in a week?",
+        "choices": [
+          "5",
+          "6",
+          "7",
+          "8"
+        ],
+        "correct": 2
+      }
+    ]
+  },
+  {
+    "id": "public-5",
+    "code": "#7d4a",
+    "title": "Kiểm tra toán học for test",
+    "subject": "Toán học",
+    "desc": "Bộ 10 câu hỏi Toán học thử nghiệm đa dạng độ dài câu hỏi, rèn luyện tư duy nhẩm nhanh và phản xạ trong 10 giây.",
+    "author": "Hệ thống Mini Quiz",
+    "timePerQ": 10,
+    "pointsPerQ": 100,
+    "copiesIssued": 1,
+    "questions": [
+      {
+        "text": "7 x 8 bằng bao nhiêu?",
+        "choices": [
+          "54",
+          "56",
+          "58",
+          "64"
+        ],
+        "correct": 1
+      },
+      {
+        "text": "Một cửa hàng nhập về 120 quyển vở. Buổi sáng bán được 1/3 số vở, buổi chiều bán được một nửa số vở còn lại. Hỏi sau cả ngày cửa hàng còn lại bao nhiêu quyển vở?",
+        "choices": [
+          "40 quyển",
+          "50 quyển",
+          "30 quyển",
+          "60 quyển"
+        ],
+        "correct": 0
+      },
+      {
+        "text": "Căn bậc hai số học của 81 là:",
+        "choices": [
+          "-9",
+          "9",
+          "±9",
+          "81"
+        ],
+        "correct": 1
+      },
+      {
+        "text": "Một thửa ruộng hình chữ nhật có chu vi là 140m, chiều rộng kém chiều dài 10m. Người ta trồng rau trên thửa ruộng, cứ 10m² thu được 5kg rau. Khối lượng rau thu được trên cả thửa ruộng là:",
+        "choices": [
+          "600 kg",
+          "550 kg",
+          "700 kg",
+          "480 kg"
+        ],
+        "correct": 0
+      },
+      {
+        "text": "Giá trị của biểu thức 2³ + 3² bằng:",
+        "choices": [
+          "15",
+          "17",
+          "18",
+          "25"
+        ],
+        "correct": 1
+      },
+      {
+        "text": "Hai ô tô cùng xuất phát từ A đến B dài 180km. Xe thứ nhất chạy 60 km/h, xe thứ hai chạy 45 km/h. Xe thứ nhất đến B trước xe thứ hai bao lâu?",
+        "choices": [
+          "30 phút",
+          "45 phút",
+          "60 phút",
+          "90 phút"
+        ],
+        "correct": 2
+      },
+      {
+        "text": "Số nguyên tố nhỏ nhất là số nào?",
+        "choices": [
+          "0",
+          "1",
+          "2",
+          "3"
+        ],
+        "correct": 2
+      },
+      {
+        "text": "Trong một lớp có 40 học sinh, có 24 bạn thích bóng đá, 18 bạn thích bóng rổ và 8 bạn thích cả hai môn. Có bao nhiêu bạn không thích môn nào trong hai môn trên?",
+        "choices": [
+          "6 học sinh",
+          "8 học sinh",
+          "10 học sinh",
+          "12 học sinh"
+        ],
+        "correct": 0
+      },
+      {
+        "text": "Phân số 3/4 được viết dưới dạng số thập phân là:",
+        "choices": [
+          "0.34",
+          "0.75",
+          "0.25",
+          "0.8"
+        ],
+        "correct": 1
+      },
+      {
+        "text": "Bác An gửi tiết kiệm 50 triệu đồng vào ngân hàng với lãi suất đơn 6% mỗi năm. Sau đúng 2 năm, bác An nhận được cả vốn lẫn lãi là:",
+        "choices": [
+          "53 triệu đồng",
+          "56 triệu đồng",
+          "58 triệu đồng",
+          "60 triệu đồng"
+        ],
+        "correct": 1
+      }
+    ]
+  }
+]

@@ -1,0 +1,37 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x, 22.x]
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: Syntax and Integrity Check
+      run: |
+        node -c server.js
+        node -c src/server.js
+        node -c src/auth.js
+
+    - name: Test Server Boot & Health Check
+      run: |
+        PORT=8080 node server.js &
+        SERVER_PID=$!
+        sleep 2
+        curl -f http://localhost:8080/api/server-info || exit 1
+        kill $SERVER_PID

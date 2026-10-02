@@ -1,0 +1,39 @@
+# Dependencies
+node_modules/
+
+# Logs & Debug
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+server.log
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Runtime active rooms & temporary files
+data/active_rooms.json
+data/active_rooms.json.tmp
+*.tmp
+
+# User sessions & spam rate limit states
+data/auth/sessions.json
+data/auth/login_attempts.json
+data/auth/register_attempts.json
+
+# User generated private data & history
+data/history/user_*
+data/private/user_*
+
+# Operating System files
+.DS_Store
+Thumbs.db
+
+# IDE & Editor settings
+.vscode/
+.idea/
+*.swp
+*.swo
+.zcode/

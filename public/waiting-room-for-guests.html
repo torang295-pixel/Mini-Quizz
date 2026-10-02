@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Phòng chờ – Mini Quiz Classroom</title>
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/home.css" />
+  <link rel="stylesheet" href="css/waiting-room.css" />
+</head>
+<body>
+
+<!-- ── SKY / CLOUDS ── -->
+<div class="sky">
+  <div class="cloud cloud-1"><svg width="260" height="80" viewBox="0 0 260 80" fill="none"><ellipse cx="130" cy="56" rx="120" ry="28" fill="white"/><ellipse cx="90" cy="42" rx="60" ry="34" fill="white"/><ellipse cx="160" cy="38" rx="52" ry="30" fill="white"/><ellipse cx="220" cy="52" rx="36" ry="22" fill="white"/><ellipse cx="40" cy="52" rx="34" ry="22" fill="white"/></svg></div>
+  <div class="cloud cloud-2"><svg width="180" height="60" viewBox="0 0 180 60" fill="none"><ellipse cx="90" cy="42" rx="82" ry="20" fill="white"/><ellipse cx="60" cy="30" rx="44" ry="26" fill="white"/><ellipse cx="120" cy="28" rx="38" ry="22" fill="white"/><ellipse cx="155" cy="38" rx="24" ry="16" fill="white"/></svg></div>
+  <div class="cloud cloud-3"><svg width="140" height="50" viewBox="0 0 140 50" fill="none"><ellipse cx="70" cy="36" rx="62" ry="16" fill="white"/><ellipse cx="46" cy="26" rx="34" ry="22" fill="white"/><ellipse cx="96" cy="24" rx="30" ry="20" fill="white"/></svg></div>
+  <div class="cloud cloud-4"><svg width="300" height="64" viewBox="0 0 300 64" fill="none"><ellipse cx="150" cy="48" rx="138" ry="18" fill="white"/><ellipse cx="100" cy="34" rx="62" ry="28" fill="white"/><ellipse cx="200" cy="30" rx="56" ry="26" fill="white"/><ellipse cx="260" cy="44" rx="36" ry="18" fill="white"/><ellipse cx="46" cy="44" rx="40" ry="20" fill="white"/></svg></div>
+  <div class="cloud cloud-5"><svg width="100" height="40" viewBox="0 0 100 40" fill="none"><ellipse cx="50" cy="28" rx="44" ry="14" fill="white"/><ellipse cx="34" cy="20" rx="24" ry="18" fill="white"/><ellipse cx="68" cy="18" rx="22" ry="16" fill="white"/></svg></div>
+  <div class="cloud cloud-6"><svg width="220" height="70" viewBox="0 0 220 70" fill="none"><ellipse cx="110" cy="52" rx="100" ry="20" fill="white"/><ellipse cx="72" cy="36" rx="52" ry="30" fill="white"/><ellipse cx="148" cy="32" rx="46" ry="28" fill="white"/><ellipse cx="192" cy="48" rx="28" ry="18" fill="white"/></svg></div>
+</div>
+
+<!-- Sun / Moon -->
+<div class="sky-body">
+  <div class="sun-wrap">
+    <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+      <g stroke="#FFD700" stroke-width="3.5" stroke-linecap="round">
+        <line x1="40" y1="2"  x2="40" y2="19"/>
+        <line x1="40" y1="61" x2="40" y2="78"/>
+        <line x1="2"  y1="40" x2="19" y2="40"/>
+        <line x1="61" y1="40" x2="78" y2="40"/>
+        <line x1="13.1" y1="13.1" x2="24.9" y2="24.9"/>
+        <line x1="55.1" y1="55.1" x2="66.9" y2="66.9"/>
+        <line x1="66.9" y1="13.1" x2="55.1" y2="24.9"/>
+        <line x1="24.9" y1="55.1" x2="13.1" y2="66.9"/>
+      </g>
+    </svg>
+  </div>
+  <div class="sun"></div>
+  <div class="moon"></div>
+</div>
+
+<div class="stars" id="stars"></div>
+
+<!-- ── HEADER ── -->
+<header>
+  <div class="app-title" id="app-title"></div>
+  <div class="header-right">
+    <button class="btn-dark" id="btn-dark" title="Chuyển chế độ tối/sáng">
+      <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <circle cx="12" cy="12" r="5"/>
+        <line x1="12" y1="2"  x2="12" y2="5"/>
+        <line x1="12" y1="19" x2="12" y2="22"/>
+        <line x1="2"  y1="12" x2="5"  y2="12"/>
+        <line x1="19" y1="12" x2="22" y2="12"/>
+        <line x1="4.2" y1="4.2"  x2="6.3" y2="6.3"/>
+        <line x1="17.7" y1="17.7" x2="19.8" y2="19.8"/>
+        <line x1="19.8" y1="4.2"  x2="17.7" y2="6.3"/>
+        <line x1="6.3"  y1="17.7" x2="4.2"  y2="19.8"/>
+      </svg>
+      <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+      </svg>
+    </button>
+    <button class="btn-logout" id="btn-leave-room" onclick="handleLeaveWaitingRoom()" style="background:#ef4444; color:#fff; border-radius:8px; padding:6px 14px; border:none; cursor:pointer; font-weight:700; font-size:0.9rem;">✕ Thoát phòng</button>
+  </div>
+</header>
+
+<!-- ── MAIN CONTENT ── -->
+<main class="waiting-main">
+
+  <!-- 1. PHÍA TRÊN CÙNG: ĐẶT MÃ PIN -->
+  <div class="pin-banner-card">
+    <div class="pin-banner-label">Mã PIN phòng thi</div>
+    <div class="pin-banner-code-wrap">
+      <span class="pin-banner-code" id="pin-display">--- ---</span>
+      <button class="pin-copy-action-btn" id="btn-copy-pin" onclick="copyPinCode()" title="Sao chép mã PIN">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+        </svg>
+      </button>
+    </div>
+    <div class="pin-banner-info">
+      <span class="pin-banner-title" id="room-title-display">Đang kết nối phòng thi...</span>
+    </div>
+  </div>
+
+  <!-- 2. PHÍA DƯỚI: DANH SÁCH NHỮNG NGƯỜI CHƠI KHÁC TRONG PHÒNG -->
+  <div class="players-board-card">
+    <div class="players-board-header">
+      <div class="players-board-title">
+        <span>👥 Người chơi trong phòng</span>
+      </div>
+      <span class="players-count-pill" id="players-count-badge">0 người</span>
+    </div>
+
+    <!-- Lưới hiển thị Avatar tròn + Nickname -->
+    <div class="players-grid" id="players-grid">
+      <div class="empty-players-hint">Đang tải danh sách người chơi...</div>
+    </div>
+  </div>
+
+  <!-- 3. THANH TRẠNG THÁI CHO KHÁCH -->
+  <div class="waiting-bottom-bar">
+    <div class="guest-wait-status" id="guest-status-box">
+      <span>⏳ Đang đợi chủ phòng bắt đầu bài thi...</span>
+    </div>
+  </div>
+
+</main>
+
+<!-- Modal thông báo khi phòng bị chủ phòng hủy -->
+<div class="cancelled-modal-overlay" id="cancelled-modal">
+  <div class="cancelled-modal-card">
+    <div class="cancelled-modal-icon">🚫</div>
+    <div class="cancelled-modal-title">Thông báo</div>
+    <div class="cancelled-modal-desc">Phòng thi đã bị hủy</div>
+    <button class="btn-cancelled-ok" onclick="confirmExitAfterCancelled()">Quay về trang chính</button>
+  </div>
+</div>
+
+<!-- Lớp phủ đếm ngược 5 4 3 2 1 trên nền xám mờ -->
+<div class="countdown-overlay" id="countdown-overlay">
+  <div class="countdown-subhead">Bài thi chuẩn bị bắt đầu!</div>
+  <div class="countdown-number" id="countdown-num">5</div>
+  <div class="countdown-tip">Hãy sẵn sàng làm bài, chúc bạn đạt kết quả cao!</div>
+</div>
+
+<footer>© 2026 Mini Quiz Classroom</footer>
+
+<script>
+  /* ── Colorize title ── */
+  document.getElementById('app-title').innerHTML =
+    [...'Mini Quiz Classroom'].map(ch =>
+      ch === ' ' ? '<span class="space"> </span>' : '<span>' + ch + '</span>'
+    ).join('');
+
+  /* ── Dark mode ── */
+  (function () {
+    const btn = document.getElementById('btn-dark');
+    const saved = localStorage.getItem('mqc-dark');
+    if (saved === '1') document.body.classList.add('dark');
+    buildStars();
+    btn.addEventListener('click', function () {
+      const isDark = document.body.classList.toggle('dark');
+      localStorage.setItem('mqc-dark', isDark ? '1' : '0');
+    });
+    function buildStars() {
+      const el = document.getElementById('stars');
+      if (!el) return;
+      el.innerHTML = '';
+      for (let i = 0; i < 60; i++) {
+        const s = document.createElement('div');
+        s.className = 'star';
+        const size = Math.random() * 2.5 + 1;
+        s.style.cssText = [
+          'width:' + size + 'px',
+          'height:' + size + 'px',
+          'top:' + (Math.random() * 90) + '%',
+          'left:' + (Math.random() * 100) + '%',
+          'animation-delay:' + (Math.random() * 3) + 's',
+          'animation-duration:' + (Math.random() * 2 + 1.5) + 's',
+        ].join(';');
+        el.appendChild(s);
+      }
+    }
+  })();
+
+  /* ── URL Params ── */
+  const params = new URLSearchParams(location.search);
+  const PIN = params.get('pin') || '---';
+  const NICKNAME = params.get('nick') || 'Bạn';
+  const AVATAR = params.get('av') || '01';
+  const ROLE = params.get('role') || 'guest'; // 'host' hoặc 'guest'
+  const isHost = (ROLE === 'host');
+
+  // ID duy nhất cho người chơi trong phiên này
+  let myPlayerId = sessionStorage.getItem('mqc_my_player_id');
+  if (!myPlayerId) {
+    myPlayerId = 'p-' + Date.now() + '-' + Math.random().toString(36).slice(2, 7);
+    sessionStorage.setItem('mqc_my_player_id', myPlayerId);
+  }
+
+  /* ── Hiển thị thông tin ban đầu ── */
+  document.getElementById('pin-display').textContent = PIN;
+
+  document.getElementById('guest-status-box').style.display = 'flex';
+  document.getElementById('btn-leave-room').href = 'index.html';
+  document.getElementById('btn-leave-room').textContent = '✕ Thoát phòng';
+
+  /* ── Helper: Escape HTML ── */
+  function escapeHtml(str) {
+    if (!str) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+  }
+
+  /* ── SAO CHÉP MÃ PIN ── */
+  function copyPinCode() {
+    navigator.clipboard.writeText(PIN).then(() => {
+      const btn = document.getElementById('btn-copy-pin');
+      const oldHtml = btn.innerHTML;
+      btn.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
+      setTimeout(() => { btn.innerHTML = oldHtml; }, 1500);
+    }).catch(() => {});
+  }
+
+  /* ── RENDER DANH SÁCH NGƯỜI CHƠI ── */
+  function renderPlayers(players) {
+    const grid = document.getElementById('players-grid');
+    const badge = document.getElementById('players-count-badge');
+    badge.textContent = `${players.length} người`;
+
+    if (!players || players.length === 0) {
+      grid.innerHTML = '<div class="empty-players-hint">Chưa có người chơi nào tham gia</div>';
+      return;
+    }
+
+    grid.innerHTML = players.map(p => {
+      const isYou = (p.id === myPlayerId) || (!p.id && p.nick === NICKNAME && p.isHost === isHost);
+      const isPlayerHost = !!p.isHost;
+      const avId = p.av || '01';
+
+      return `
+        <div class="player-slot-card ${isYou ? 'is-you' : ''}">
+          <div class="player-avatar-ring">
+            <img class="player-avatar-img" src="characters/${avId}.png" alt="${escapeHtml(p.nick)}" />
+          </div>
+          <div class="player-slot-name" title="${escapeHtml(p.nick)}">
+            ${escapeHtml(p.nick)}
+          </div>
+          ${isPlayerHost ? '<span class="badge-host">👑 Chủ phòng</span>' : (isYou ? '<span class="badge-you">Bạn</span>' : '')}
+        </div>
+      `;
+    }).join('');
+  }
+
+  /* ── THAM GIA VÀO PHÒNG (JOIN API) ── */
+  let currentPlayers = [];
+  let pollInterval = null;
+
+  async function joinWaitingRoom() {
+    // 1. Lấy thông tin phòng từ customRooms nếu có sẵn
+    try {
+      const customRooms = JSON.parse(localStorage.getItem('mqc_custom_rooms') || '{}');
+      if (customRooms[PIN] && customRooms[PIN].title) {
+        document.getElementById('room-title-display').textContent = customRooms[PIN].title;
+      }
+    } catch (e) {}
+
+    // 2. Gửi request tham gia lên server
+    try {
+      const res = await fetch(`/api/rooms/${encodeURIComponent(PIN)}/join`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          id: myPlayerId,
+          nick: NICKNAME,
+          av: AVATAR,
+          isHost: isHost
+        })
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        if (data.success) {
+          if (data.title) {
+            document.getElementById('room-title-display').textContent = data.title;
+          }
+          currentPlayers = data.players || [];
+          renderPlayers(currentPlayers);
+          syncLocalRoomState(currentPlayers, data.status);
+        }
+      } else {
+        // Nếu server trả về 404 (chưa có phòng trên server, fallback dùng local)
+        fallbackLocalJoin();
+      }
+    } catch (err) {
+      fallbackLocalJoin();
+    }
+
+    // 3. Bắt đầu polling đồng bộ định kỳ mỗi 1.2s
+    startPollingStatus();
+  }
+
+  /* Fallback nếu chạy local/offline */
+  function fallbackLocalJoin() {
+    const key = `mqc_waiting_players_${PIN}`;
+    let players = [];
+    try {
+      players = JSON.parse(localStorage.getItem(key) || '[]');
+    } catch (e) {}
+
+    const myEntry = { id: myPlayerId, nick: NICKNAME, av: AVATAR, isHost };
+    const idx = players.findIndex(p => p.id === myPlayerId || (p.nick === NICKNAME && p.isHost === isHost));
+    if (idx >= 0) {
+      players[idx] = myEntry;
+    } else {
+      players.push(myEntry);
+    }
+    localStorage.setItem(key, JSON.stringify(players));
+    currentPlayers = players;
+    renderPlayers(currentPlayers);
+  }
+
+  function syncLocalRoomState(players, status) {
+    try {
+      localStorage.setItem(`mqc_waiting_players_${PIN}`, JSON.stringify(players));
+      if (status) {
+        localStorage.setItem(`mqc_room_status_${PIN}`, status);
+      }
+    } catch (e) {}
+  }
+
+  /* ── POLLING ĐỒNG BỘ TRẠNG THÁI PHÒNG ── */
+  function startPollingStatus() {
+    if (pollInterval) clearInterval(pollInterval);
+
+    pollInterval = setInterval(async () => {
+      // 1. Kiểm tra trạng thái từ server
+      try {
+        const res = await fetch(`/api/rooms/${encodeURIComponent(PIN)}/status`);
+        if (res.status === 404) {
+          // Phòng thi đã bị chủ phòng xóa hoặc hết hạn!
+          handleRoomCancelled();
+          return;
+        }
+
+        if (res.ok) {
+          const data = await res.json();
+          if (data.success) {
+            if (data.title) {
+              document.getElementById('room-title-display').textContent = data.title;
+            }
+            if (Array.isArray(data.players)) {
+              currentPlayers = data.players;
+              renderPlayers(currentPlayers);
+              syncLocalRoomState(currentPlayers, data.status);
+            }
+
+            // NẾU CHỦ PHÒNG ĐÃ BẮT ĐẦU THI -> ĐẾM NGƯỢC 5S VÀ CHUYỂN VÀO PHÒNG LÀM BÀI!
+            if (data.status === 'countdown') {
+              startGuestCountdown(data.countdown || 5);
+              return;
+            }
+            if (data.status === 'started') {
+              startGuestCountdown(0);
+              return;
+            }
+            return;
+          }
+        }
+      } catch (e) {}
+
+      // 2. Fallback kiểm tra từ localStorage
+      try {
+        const localStatus = localStorage.getItem(`mqc_room_status_${PIN}`);
+        if (localStatus === 'cancelled') {
+          handleRoomCancelled();
+          return;
+        }
+        if (localStatus === 'countdown') {
+          startGuestCountdown(5);
+          return;
+        }
+        if (localStatus === 'started') {
+          startGuestCountdown(0);
+          return;
+        }
+        const localPlayers = JSON.parse(localStorage.getItem(`mqc_waiting_players_${PIN}`) || '[]');
+        if (localPlayers.length > 0) {
+          renderPlayers(localPlayers);
+        }
+      } catch (err) {}
+    }, 1200);
+  }
+
+  // Lắng nghe storage event (cho phép các tab khác nhau trên cùng máy phản ứng ngay lập tức khi host bấm start hoặc hủy phòng)
+  window.addEventListener('storage', function(e) {
+    if (e.key === `mqc_room_status_${PIN}`) {
+      if (e.newValue === 'countdown') startGuestCountdown(5);
+      if (e.newValue === 'started') startGuestCountdown(0);
+      if (e.newValue === 'cancelled') handleRoomCancelled();
+    }
+    if (e.key === `mqc_waiting_players_${PIN}`) {
+      try {
+        const updated = JSON.parse(e.newValue || '[]');
+        renderPlayers(updated);
+      } catch (err) {}
+    }
+  });
+
+  /* ── XỬ LÝ KHI CHỦ PHÒNG HỦY PHÒNG THI ── */
+  let roomCancelledNotified = false;
+  function handleRoomCancelled() {
+    if (roomCancelledNotified) return;
+    roomCancelledNotified = true;
+    if (pollInterval) clearInterval(pollInterval);
+
+    // Dọn dẹp session người chơi
+    sessionStorage.removeItem('mqc_my_player_id');
+
+    const modal = document.getElementById('cancelled-modal');
+    if (modal) {
+      modal.classList.add('show');
+    } else {
+      alert('Phòng thi đã bị hủy');
+      confirmExitAfterCancelled();
+    }
+  }
+
+  function confirmExitAfterCancelled() {
+    const target = loggedInUser ? 'dashboard.html' : 'index.html';
+    window.location.href = target;
+  }
+
+  /* ── NGƯỜI CHƠI BẤM THOÁT PHÒNG ── */
+  async function handleLeaveWaitingRoom() {
+    const btn = document.getElementById('btn-leave-room');
+    if (btn) {
+      btn.disabled = true;
+      btn.textContent = 'Đang thoát...';
+    }
+    if (pollInterval) clearInterval(pollInterval);
+
+    // 1. Gửi request báo lên server để xóa khỏi danh sách phòng chờ
+    try {
+      await fetch(`/api/rooms/${encodeURIComponent(PIN)}/leave`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: myPlayerId, nick: NICKNAME })
+      });
+    } catch (err) {}
+
+    // 2. Cập nhật localStorage cục bộ
+    try {
+      const key = `mqc_waiting_players_${PIN}`;
+      let players = JSON.parse(localStorage.getItem(key) || '[]');
+      players = players.filter(p => p.id !== myPlayerId && p.nick !== NICKNAME);
+      localStorage.setItem(key, JSON.stringify(players));
+    } catch (e) {}
+
+    sessionStorage.removeItem('mqc_my_player_id');
+
+    // 3. Chuyển hướng người dùng
+    const target = loggedInUser ? 'dashboard.html' : 'index.html';
+    window.location.href = target;
+  }
+
+  // Tự động giải phóng chỗ khi tắt tab hoặc rời trang
+  window.addEventListener('pagehide', function() {
+    if (PIN && myPlayerId) {
+      const payload = JSON.stringify({ id: myPlayerId, nick: NICKNAME });
+      if (navigator.sendBeacon) {
+        navigator.sendBeacon(`/api/rooms/${encodeURIComponent(PIN)}/leave`, payload);
+      }
+    }
+  });
+
+  /* ── ĐẾM NGƯỢC 5 4 3 2 1 TRÊN NỀN XÁM MỜ VÀ CHUYỂN VÀO PHÒNG LÀM BÀI ── */
+  let guestCountdownActive = false;
+  let guestCountdownTimer = null;
+
+  function startGuestCountdown(initialSec = 5) {
+    if (redirected || guestCountdownActive) return;
+    guestCountdownActive = true;
+    if (pollInterval) clearInterval(pollInterval);
+
+    if (initialSec <= 0) {
+      goToExamRoom();
+      return;
+    }
+
+    const overlay = document.getElementById('countdown-overlay');
+    const numEl = document.getElementById('countdown-num');
+    if (overlay) overlay.classList.add('show');
+
+    let remain = initialSec;
+    if (numEl) numEl.textContent = remain;
+
+    if (guestCountdownTimer) clearInterval(guestCountdownTimer);
+    guestCountdownTimer = setInterval(() => {
+      remain--;
+      if (remain > 0) {
+        if (numEl) {
+          numEl.textContent = remain;
+          numEl.style.animation = 'none';
+          void numEl.offsetWidth; // reflow
+          numEl.style.animation = 'countNumberPop 0.9s cubic-bezier(0.34, 1.56, 0.64, 1)';
+        }
+      } else {
+        clearInterval(guestCountdownTimer);
+        if (numEl) {
+          numEl.textContent = 'GO!';
+          numEl.style.fontSize = '8rem';
+        }
+        setTimeout(() => {
+          goToExamRoom();
+        }, 600);
+      }
+    }, 1000);
+  }
+
+  /* ── CHUYỂN HƯỚNG VÀO PHÒNG THI KHI CHỦ PHÒNG BẮT ĐẦU ── */
+  let redirected = false;
+  function goToExamRoom() {
+    if (redirected) return;
+    redirected = true;
+    if (pollInterval) clearInterval(pollInterval);
+    if (guestCountdownTimer) clearInterval(guestCountdownTimer);
+
+    // Chuyển khách đến phòng làm bài room.html
+    const targetUrl = `room.html?pin=${encodeURIComponent(PIN)}&nick=${encodeURIComponent(NICKNAME)}&av=${encodeURIComponent(AVATAR)}`;
+    window.location.href = targetUrl;
+  }
+
+  /* ── Check Auth: Người đã đăng nhập thoát phòng sẽ về dashboard ── */
+  let loggedInUser = null;
+  async function checkAuthAndAdjustLeaveButton() {
+    try {
+      const res = await fetch('/api/auth/me', { credentials: 'same-origin' });
+      if (res.ok) {
+        const data = await res.json();
+        if (data && data.success) {
+          loggedInUser = data;
+          // Hiển thị chip tài khoản trên Header
+          const headerRight = document.querySelector('.header-right');
+          if (headerRight && !document.getElementById('header-user-chip')) {
+            const chipHtml = `
+              <div class="user-chip" id="header-user-chip" title="${escapeHtml(data.displayName)} (${escapeHtml(data.username)})" style="display:inline-flex; align-items:center; gap:8px; background:#eff6ff; border:1.5px solid #bfdbfe; padding:5px 12px; border-radius:20px; font-size:0.88rem; font-weight:700; color:#1d4ed8; margin-right:6px;">
+                <span>👨‍🏫</span>
+                <span>${escapeHtml(data.displayName)}</span>
+              </div>
+            `;
+            headerRight.insertAdjacentHTML('afterbegin', chipHtml);
+          }
+        }
+      }
+    } catch (err) {
+      // Khách chưa đăng nhập -> giữ nguyên link về index.html
+    }
+  }
+
+  // Khởi động khi vào trang
+  window.addEventListener('DOMContentLoaded', () => {
+    checkAuthAndAdjustLeaveButton();
+    joinWaitingRoom();
+  });
+</script>
+
+</body>
+</html>

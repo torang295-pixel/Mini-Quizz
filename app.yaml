@@ -1,0 +1,6 @@
+runtime: nodejs20
+instance_class: F1
+env_variables:
+  PORT: "8080"
+  NODE_ENV: "production"
+  APP_URL: "https://mini-quiz-classroom-n12.ai.studio"

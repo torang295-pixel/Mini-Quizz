@@ -1,0 +1,12 @@
+[
+  {
+    "username": "admin",
+    "usernameLower": "admin",
+    "displayName": "Quản trị viên",
+    "salt": "8cacee326d3aac481ae3d80a40a2620f",
+    "passwordHash": "61b7cfc416944246a19c3dbbd45aa4b09b6475ec5ab3f5a64d076243b7e80f376f080431dc4679349be6bdfec2835e86af5db49fc3cf434fab2ca5bfe5e82dbe",
+    "createdAt": 1789538729729,
+    "lastNameChangeAt": 0,
+    "lastPasswordChangeAt": 0
+  }
+]

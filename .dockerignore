@@ -1,0 +1,5 @@
+.git
+.zcode
+node_modules
+*.log
+*.tmp

@@ -1,0 +1,21 @@
+{
+  "name": "mini-quiz-classroom",
+  "version": "1.0.0",
+  "description": "Mini Quiz Classroom - Nen tang thi trac nghiem truc tuyen thoi gian thuc",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "quiz",
+    "classroom",
+    "realtime",
+    "education"
+  ],
+  "author": "Mini Quiz Classroom Team",
+  "license": "ISC"
+}

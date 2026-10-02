@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mini Quiz Classroom</title>
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/home.css" />
+</head>
+<body>
+
+<div class="sky">
+  <div class="cloud cloud-1"><svg width="260" height="80" viewBox="0 0 260 80" fill="none"><ellipse cx="130" cy="56" rx="120" ry="28" fill="white"/><ellipse cx="90" cy="42" rx="60" ry="34" fill="white"/><ellipse cx="160" cy="38" rx="52" ry="30" fill="white"/><ellipse cx="220" cy="52" rx="36" ry="22" fill="white"/><ellipse cx="40" cy="52" rx="34" ry="22" fill="white"/></svg></div>
+  <div class="cloud cloud-2"><svg width="180" height="60" viewBox="0 0 180 60" fill="none"><ellipse cx="90" cy="42" rx="82" ry="20" fill="white"/><ellipse cx="60" cy="30" rx="44" ry="26" fill="white"/><ellipse cx="120" cy="28" rx="38" ry="22" fill="white"/><ellipse cx="155" cy="38" rx="24" ry="16" fill="white"/></svg></div>
+  <div class="cloud cloud-3"><svg width="140" height="50" viewBox="0 0 140 50" fill="none"><ellipse cx="70" cy="36" rx="62" ry="16" fill="white"/><ellipse cx="46" cy="26" rx="34" ry="22" fill="white"/><ellipse cx="96" cy="24" rx="30" ry="20" fill="white"/></svg></div>
+  <div class="cloud cloud-4"><svg width="300" height="64" viewBox="0 0 300 64" fill="none"><ellipse cx="150" cy="48" rx="138" ry="18" fill="white"/><ellipse cx="100" cy="34" rx="62" ry="28" fill="white"/><ellipse cx="200" cy="30" rx="56" ry="26" fill="white"/><ellipse cx="260" cy="44" rx="36" ry="18" fill="white"/><ellipse cx="46" cy="44" rx="40" ry="20" fill="white"/></svg></div>
+  <div class="cloud cloud-5"><svg width="100" height="40" viewBox="0 0 100 40" fill="none"><ellipse cx="50" cy="28" rx="44" ry="14" fill="white"/><ellipse cx="34" cy="20" rx="24" ry="18" fill="white"/><ellipse cx="68" cy="18" rx="22" ry="16" fill="white"/></svg></div>
+  <div class="cloud cloud-6"><svg width="220" height="70" viewBox="0 0 220 70" fill="none"><ellipse cx="110" cy="52" rx="100" ry="20" fill="white"/><ellipse cx="72" cy="36" rx="52" ry="30" fill="white"/><ellipse cx="148" cy="32" rx="46" ry="28" fill="white"/><ellipse cx="192" cy="48" rx="28" ry="18" fill="white"/></svg></div>
+</div>
+
+<!-- Sun / Moon -->
+<div class="sky-body">
+  <div class="sun-wrap">
+    <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+      <!-- rays -->
+      <g stroke="#FFD700" stroke-width="3.5" stroke-linecap="round">
+        <line x1="40" y1="2"  x2="40" y2="19"/>
+        <line x1="40" y1="61" x2="40" y2="78"/>
+        <line x1="2"  y1="40" x2="19" y2="40"/>
+        <line x1="61" y1="40" x2="78" y2="40"/>
+        <line x1="13.1" y1="13.1" x2="24.9" y2="24.9"/>
+        <line x1="55.1" y1="55.1" x2="66.9" y2="66.9"/>
+        <line x1="66.9" y1="13.1" x2="55.1" y2="24.9"/>
+        <line x1="24.9" y1="55.1" x2="13.1" y2="66.9"/>
+      </g>
+    </svg>
+  </div>
+  <div class="sun"></div>
+  <div class="moon"></div>
+</div>
+<!-- Stars (dark mode) -->
+<div class="stars" id="stars"></div>
+
+<header>
+  <div class="app-title" id="app-title"></div>
+  <div class="header-right">
+    <button class="btn-dark" id="btn-dark" title="Chuyển chế độ tối/sáng">
+      <!-- sun icon -->
+      <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <circle cx="12" cy="12" r="5"/>
+        <line x1="12" y1="2"  x2="12" y2="5"/>
+        <line x1="12" y1="19" x2="12" y2="22"/>
+        <line x1="2"  y1="12" x2="5"  y2="12"/>
+        <line x1="19" y1="12" x2="22" y2="12"/>
+        <line x1="4.2" y1="4.2"  x2="6.3" y2="6.3"/>
+        <line x1="17.7" y1="17.7" x2="19.8" y2="19.8"/>
+        <line x1="19.8" y1="4.2"  x2="17.7" y2="6.3"/>
+        <line x1="6.3"  y1="17.7" x2="4.2"  y2="19.8"/>
+      </svg>
+      <!-- moon icon -->
+      <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+      </svg>
+    </button>
+    <div class="login-wrap" id="header-auth-wrap">
+      <button class="btn-login" onclick="openLoginModal()">Đăng nhập / Đăng ký</button>
+      <div class="tooltip">Đăng nhập để sử dụng thêm nhiều tính năng hơn</div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- Step 1: PIN (centered) -->
+  <div class="card" id="step-pin">
+    <div class="join-section">
+      <div class="join-label">Nhập mã PIN để tham gia ngay</div>
+      <input id="pin-input" type="text" inputmode="numeric" maxlength="7" placeholder="XXX-XXX" autocomplete="off" />
+      <button class="btn-join" onclick="handleJoin()">Tham gia</button>
+      <div class="error-msg" id="error-msg">❌ Mã phòng sai hoặc không tồn tại</div>
+    </div>
+  </div>
+
+  <!-- Step 2: Avatar + Nickname -->
+  <div class="card card-wide" id="step-nick" style="display:none;">
+    <div class="avatar-stage">
+      <div class="avatar-ring">
+        <img id="avatar-preview" src="characters/01.png" alt="avatar" />
+        <div class="avatar-stage-hint">Chọn<br>nhân vật</div>
+      </div>
+    </div>
+    <div class="avatar-grid" id="avatar-grid"></div>
+    <div class="nick-row">
+      <input id="nickname-input" type="text" maxlength="20"
+             placeholder="Nhập nickname của bạn..." autocomplete="off" />
+    </div>
+    <div class="error-msg" id="error-nick">❌ Nickname không được để trống</div>
+    <button class="btn-join" onclick="handleEnter()">Vào phòng </button>
+  </div>
+</main>
+
+<footer>© 2026 Mini Quiz Classroom</footer>
+
+<script>
+  /* Colorize title */
+  document.getElementById('app-title').innerHTML =
+    [...'Mini Quiz Classroom'].map(ch =>
+      ch === ' ' ? '<span class="space"> </span>' : '<span>' + ch + '</span>'
+    ).join('');
+
+
+  /* ── Dark mode ── */
+  (function () {
+    const btn = document.getElementById('btn-dark');
+    const saved = localStorage.getItem('mqc-dark');
+    if (saved === '1') document.body.classList.add('dark');
+    buildStars();
+    btn.addEventListener('click', function () {
+      const isDark = document.body.classList.toggle('dark');
+      localStorage.setItem('mqc-dark', isDark ? '1' : '0');
+    });
+    function buildStars() {
+      const el = document.getElementById('stars');
+      if (!el) return;
+      el.innerHTML = '';
+      for (let i = 0; i < 60; i++) {
+        const s = document.createElement('div');
+        s.className = 'star';
+        const size = Math.random() * 2.5 + 1;
+        s.style.cssText = [
+          'width:' + size + 'px',
+          'height:' + size + 'px',
+          'top:' + (Math.random() * 90) + '%',
+          'left:' + (Math.random() * 100) + '%',
+          'animation-delay:' + (Math.random() * 3) + 's',
+          'animation-duration:' + (Math.random() * 2 + 1.5) + 's',
+        ].join(';');
+        el.appendChild(s);
+      }
+    }
+  })();
+
+  /* PIN mask */
+  const pinInput = document.getElementById('pin-input');
+  pinInput.addEventListener('input', function () {
+    let raw = this.value.replace(/[^0-9]/g, '').slice(0, 6);
+    this.value = raw.length > 3 ? raw.slice(0, 3) + '-' + raw.slice(3) : raw;
+    document.getElementById('error-msg').classList.remove('show');
+    pinInput.style.borderColor = '';
+  });
+  pinInput.addEventListener('keydown', e => { if (e.key === 'Enter') handleJoin(); });
+
+  /* Valid rooms & Realtime Server PIN check */
+  let validatedPin = '';
+
+  async function handleJoin() {
+    const pin = pinInput.value.trim();
+    if (!/^[0-9]{3}-[0-9]{3}$/.test(pin)) {
+      document.getElementById('error-msg').textContent = '❌ Mã phòng sai hoặc không tồn tại';
+      document.getElementById('error-msg').classList.add('show');
+      pinInput.style.borderColor = '#D32F2F';
+      return;
+    }
+
+    // 1. Kiểm tra trực tiếp qua Server API để các máy khác nhau đều kết nối được
+    let isValid = false;
+    try {
+      const res = await fetch(`/api/rooms/${encodeURIComponent(pin)}?check=1`);
+      if (res.ok) {
+        const data = await res.json();
+        if (data.locked) {
+          document.getElementById('error-msg').textContent = '❌ Phòng thi đang khóa, không thể vào';
+          document.getElementById('error-msg').classList.add('show');
+          pinInput.style.borderColor = '#D32F2F';
+          return;
+        }
+        if (data.full) {
+          document.getElementById('error-msg').textContent = '❌ Phòng không còn chỗ trống';
+          document.getElementById('error-msg').classList.add('show');
+          pinInput.style.borderColor = '#D32F2F';
+          return;
+        }
+        if (data.success && data.room) {
+          isValid = true;
+          // Lưu vào storage máy này để sử dụng
+          const customRooms = JSON.parse(localStorage.getItem('mqc_custom_rooms') || '{}');
+          customRooms[pin] = data.room;
+          localStorage.setItem('mqc_custom_rooms', JSON.stringify(customRooms));
+        }
+      }
+    } catch (err) {
+      console.warn('Lỗi kết nối server, kiểm tra offline fallback:', err);
+    }
+
+    // 2. Fallback offline cho các phòng mẫu mặc định
+    if (!isValid) {
+      try {
+        const customRooms = JSON.parse(localStorage.getItem('mqc_custom_rooms') || '{}');
+        const room = customRooms[pin];
+        if (room) {
+          if (room.isLocked) {
+            document.getElementById('error-msg').textContent = '❌ Phòng thi đang khóa, không thể vào';
+            document.getElementById('error-msg').classList.add('show');
+            pinInput.style.borderColor = '#D32F2F';
+            return;
+          }
+          const waitingPlayers = JSON.parse(localStorage.getItem(`mqc_waiting_players_${pin}`) || '[]');
+          const cap = Number(room.capacity) || 40;
+          if (waitingPlayers.length >= cap) {
+            document.getElementById('error-msg').textContent = '❌ Phòng không còn chỗ trống';
+            document.getElementById('error-msg').classList.add('show');
+            pinInput.style.borderColor = '#D32F2F';
+            return;
+          }
+          isValid = true;
+        }
+      } catch(e) {}
+
+      if (!isValid) {
+        const DEFAULT_ROOMS = new Set(['363-636', '123-456', '000-000', '888-999', '777-888']);
+        if (DEFAULT_ROOMS.has(pin)) {
+          isValid = true;
+        }
+      }
+    }
+
+    if (!isValid) {
+      document.getElementById('error-msg').textContent = '❌ Mã phòng sai hoặc không tồn tại';
+      document.getElementById('error-msg').classList.add('show');
+      pinInput.style.borderColor = '#D32F2F';
+      return;
+    }
+
+    validatedPin = pin;
+    document.getElementById('step-pin').style.display = 'none';
+    document.getElementById('step-nick').style.display = '';
+    buildAvatarGrid();
+    const nickInput = document.getElementById('nickname-input');
+    if (currentUser && currentUser.displayName && !nickInput.value) {
+      nickInput.value = currentUser.displayName;
+    }
+    nickInput.focus();
+  }
+
+  /* Avatar grid */
+  const AVATARS = [
+    '01','02','03','04','06','08','09','10','11','13','14','15',
+    '17','18','19','20','21','22','23','24','26','27','28','29',
+    '30','31','32','33','34','36','37','38','39','40','41','42'
+  ];
+  let selectedAvatar = AVATARS[0];
+
+  function buildAvatarGrid() {
+    const grid = document.getElementById('avatar-grid');
+    grid.innerHTML = '';
+    AVATARS.forEach(id => {
+      const btn = document.createElement('button');
+      btn.className = 'av-btn' + (id === selectedAvatar ? ' selected' : '');
+      btn.dataset.id = id;
+      const img = document.createElement('img');
+      img.src = 'characters/' + id + '.png';
+      img.alt = id;
+      img.loading = 'lazy';
+      btn.appendChild(img);
+      btn.addEventListener('click', () => selectAvatar(id));
+      grid.appendChild(btn);
+    });
+  }
+
+  function selectAvatar(id) {
+    selectedAvatar = id;
+    const prev = document.getElementById('avatar-preview');
+    prev.classList.remove('pop');
+    void prev.offsetWidth;
+    prev.classList.add('pop');
+    prev.src = 'characters/' + id + '.png';
+    document.querySelectorAll('.av-btn').forEach(b =>
+      b.classList.toggle('selected', b.dataset.id === id)
+    );
+  }
+
+  function handleEnter() {
+    const nick = document.getElementById('nickname-input').value.trim();
+    if (!nick) {
+      document.getElementById('error-nick').classList.add('show');
+      return;
+    }
+    const url = 'waiting-room-for-guests.html?pin=' + validatedPin
+      + '&nick=' + encodeURIComponent(nick)
+      + '&av=' + selectedAvatar;
+    window.location.href = url;
+  }
+
+  /* ── Gọi khởi tạo khi trang nạp: check username realtime & tự động điền PIN từ mã QR ── */
+  function autoFillPinFromQuery() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const pinParam = urlParams.get('pin');
+    if (pinParam) {
+      const pinEl = document.getElementById('pin-input');
+      if (pinEl) {
+        let raw = pinParam.replace(/[^0-9]/g, '').slice(0, 6);
+        pinEl.value = raw.length > 3 ? raw.slice(0, 3) + '-' + raw.slice(3) : raw;
+        // Tự động kiểm tra mã phòng và chuyển đến bước chọn nhân vật
+        handleJoin();
+      }
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    window.addEventListener('DOMContentLoaded', () => {
+      setupRealtimeUsernameCheck();
+      autoFillPinFromQuery();
+    });
+  } else {
+    setupRealtimeUsernameCheck();
+    autoFillPinFromQuery();
+  }
+
+  /* ── Login/Register modal ── */
+  function openLoginModal() {
+    document.getElementById('login-modal').classList.add('show');
+    switchAuthTab('login');
+    document.getElementById('login-user').focus();
+  }
+
+  function closeLoginModal() {
+    document.getElementById('login-modal').classList.remove('show');
+  }
+
+  function handleModalOverlayClick(e) {
+    if (e.target.id === 'login-modal') closeLoginModal();
+  }
+
+  function switchAuthTab(tab) {
+    const isLogin = tab === 'login';
+    document.getElementById('tab-login').classList.toggle('active', isLogin);
+    document.getElementById('tab-register').classList.toggle('active', !isLogin);
+    document.getElementById('form-login').style.display = isLogin ? '' : 'none';
+    document.getElementById('form-register').style.display = isLogin ? 'none' : '';
+    hideAuthMessage('error-login');
+    hideAuthMessage('error-register');
+  }
+
+  function showAuthMessage(id, text, isWarning) {
+    const el = document.getElementById(id);
+    el.textContent = (isWarning ? '⚠️ ' : '❌ ') + text;
+    el.classList.toggle('warning', !!isWarning);
+    el.classList.add('show');
+  }
+  function hideAuthMessage(id) {
+    document.getElementById(id).classList.remove('show');
+  }
+
+  async function handleLogin() {
+    const username = document.getElementById('login-user').value.trim();
+    const password = document.getElementById('login-pass').value;
+    hideAuthMessage('error-login');
+    try {
+      const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'same-origin',
+        body: JSON.stringify({ username, password }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        const urlParams = new URLSearchParams(window.location.search);
+        const redirectUrl = urlParams.get('redirect') || 'dashboard.html';
+        window.location.href = redirectUrl;
+      } else {
+        showAuthMessage('error-login', data.message || 'Tài khoản hoặc mật khẩu không đúng', res.status === 429);
+      }
+    } catch (err) {
+      showAuthMessage('error-login', 'Không thể kết nối tới máy chủ.');
+    }
+  }
+
+  /* ── Tự động nhận diện user đã đăng nhập & hiển thị nút Bảng điều khiển ── */
+  let currentUser = null;
+  (async function checkAuthOnHome() {
+    try {
+      const res = await fetch('/api/auth/me', { credentials: 'same-origin' });
+      if (res.ok) {
+        const data = await res.json();
+        currentUser = data;
+        const wrap = document.getElementById('header-auth-wrap');
+        if (wrap) {
+          wrap.innerHTML = `
+            <a href="dashboard.html" class="btn-login" style="background:#0284c7; color:#fff; border:none; text-decoration:none; font-weight:800; display:inline-flex; align-items:center; gap:6px; padding:7px 16px; border-radius:10px; box-shadow:0 3px 8px rgba(2,132,199,0.3);">
+              <span>📊 Bảng điều khiển</span>
+            </a>
+          `;
+        }
+      } else {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('needLogin') === '1') {
+          openLoginModal();
+          showAuthMessage('error-login', 'Vui lòng đăng nhập để truy cập Bảng điều khiển (Gợi ý: admin / 123456 hoặc Doanh / doanhle)', true);
+        }
+      }
+    } catch (e) {}
+  })();
+
+  async function handleRegister() {
+    const username = document.getElementById('reg-user').value.trim();
+    const displayName = document.getElementById('reg-name').value.trim();
+    const password = document.getElementById('reg-pass').value;
+    const confirmPassword = document.getElementById('reg-confirm').value;
+    hideAuthMessage('error-register');
+
+    if (!isUsernameValidForRegister) {
+      const feedback = document.getElementById('reg-user-feedback').textContent;
+      showAuthMessage('error-register', feedback || 'Vui lòng nhập tài khoản hợp lệ');
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      showAuthMessage('error-register', 'Xác nhận mật khẩu không khớp');
+      return;
+    }
+    try {
+      const res = await fetch('/api/auth/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'same-origin',
+        body: JSON.stringify({ username, displayName, password, confirmPassword }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        window.location.href = 'dashboard.html';
+      } else {
+        showAuthMessage('error-register', data.message || 'Đăng ký thất bại', res.status === 429);
+      }
+    } catch (err) {
+      showAuthMessage('error-register', 'Không thể kết nối tới máy chủ.');
+    }
+  }
+
+  /* ── Kiểm tra tài khoản thời gian thực khi đăng ký ── */
+  let checkUsernameTimeout = null;
+  let isUsernameValidForRegister = false;
+
+  function setupRealtimeUsernameCheck() {
+    const regUserInput = document.getElementById('reg-user');
+    const feedback = document.getElementById('reg-user-feedback');
+    const regSubmitBtn = document.getElementById('btn-submit-register');
+    if (!regUserInput) return;
+
+    regUserInput.addEventListener('input', function () {
+      const val = this.value.trim();
+      clearTimeout(checkUsernameTimeout);
+
+      if (!val) {
+        feedback.textContent = '';
+        feedback.style.color = '';
+        regUserInput.style.borderColor = '';
+        isUsernameValidForRegister = false;
+        return;
+      }
+
+      if (val.length < 3) {
+        feedback.textContent = 'Tài khoản phải từ 3-20 ký tự';
+        feedback.style.color = '#E65100';
+        regUserInput.style.borderColor = '#FFB74D';
+        isUsernameValidForRegister = false;
+        return;
+      }
+
+      // Debounce 300ms gọi API
+      checkUsernameTimeout = setTimeout(async () => {
+        try {
+          const res = await fetch('/api/auth/check-username?u=' + encodeURIComponent(val));
+          const data = await res.json();
+          if (data.exists) {
+            feedback.textContent = '⚠️ ' + data.message;
+            feedback.style.color = '#D32F2F';
+            regUserInput.style.borderColor = '#D32F2F';
+            isUsernameValidForRegister = false;
+          } else if (!data.valid) {
+            feedback.textContent = '⚠️ ' + data.message;
+            feedback.style.color = '#E65100';
+            regUserInput.style.borderColor = '#FFB74D';
+            isUsernameValidForRegister = false;
+          } else {
+            feedback.textContent = '✓ ' + data.message;
+            feedback.style.color = '#2E7D32';
+            regUserInput.style.borderColor = '#4CAF50';
+            isUsernameValidForRegister = true;
+          }
+        } catch (e) {
+          feedback.textContent = '';
+        }
+      }, 300);
+    });
+  }
+
+  document.getElementById('login-pass').addEventListener('keydown', e => {
+    if (e.key === 'Enter') handleLogin();
+  });
+  document.getElementById('login-user').addEventListener('keydown', e => {
+    if (e.key === 'Enter') document.getElementById('login-pass').focus();
+  });
+  document.getElementById('reg-confirm').addEventListener('keydown', e => {
+    if (e.key === 'Enter') handleRegister();
+  });
+</script>
+
+<!-- Login/Register Modal -->
+<div class="modal-overlay" id="login-modal" onclick="handleModalOverlayClick(event)">
+  <div class="modal-card">
+    <div class="modal-header">
+      <div class="modal-title">🔐 Tài khoản</div>
+      <button class="btn-close-modal" onclick="closeLoginModal()">✕</button>
+    </div>
+    <div class="auth-tabs">
+      <button class="auth-tab active" id="tab-login" onclick="switchAuthTab('login')">Đăng nhập</button>
+      <button class="auth-tab" id="tab-register" onclick="switchAuthTab('register')">Đăng ký</button>
+    </div>
+
+    <div id="form-login">
+      <div class="login-form-group">
+        <label class="login-form-label" for="login-user">Tài khoản</label>
+        <input class="login-form-input" id="login-user" type="text" placeholder="Nhập tài khoản" autocomplete="username" />
+      </div>
+      <div class="login-form-group">
+        <label class="login-form-label" for="login-pass">Mật khẩu</label>
+        <input class="login-form-input" id="login-pass" type="password" placeholder="Nhập mật khẩu" autocomplete="current-password" />
+      </div>
+      <div class="error-msg" id="error-login"></div>
+      <button class="btn-join" onclick="handleLogin()">Đăng nhập</button>
+    </div>
+
+    <div id="form-register" style="display:none;">
+      <div class="login-form-group">
+        <label class="login-form-label" for="reg-user">Tài khoản</label>
+        <input class="login-form-input" id="reg-user" type="text" placeholder="3-20 ký tự, chữ/số/gạch dưới" autocomplete="username" />
+        <div class="login-hint" id="reg-user-feedback"></div>
+      </div>
+      <div class="login-form-group">
+        <label class="login-form-label" for="reg-name">Tên hiển thị</label>
+        <input class="login-form-input" id="reg-name" type="text" placeholder="Tên hiển thị của bạn" autocomplete="off" />
+      </div>
+      <div class="login-form-group">
+        <label class="login-form-label" for="reg-pass">Mật khẩu</label>
+        <input class="login-form-input" id="reg-pass" type="password" placeholder="Ít nhất 6 ký tự" autocomplete="new-password" />
+      </div>
+      <div class="login-form-group">
+        <label class="login-form-label" for="reg-confirm">Xác nhận mật khẩu</label>
+        <input class="login-form-input" id="reg-confirm" type="password" placeholder="Nhập lại mật khẩu" autocomplete="new-password" />
+      </div>
+      <div class="error-msg" id="error-register"></div>
+      <button class="btn-join" id="btn-submit-register" onclick="handleRegister()">Đăng ký</button>
+    </div>
+  </div>
+</div>
+</body>
+</html>

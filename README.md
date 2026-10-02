@@ -3,7 +3,7 @@
 > Nền tảng thi trắc nghiệm trực tuyến thời gian thực dành cho lớp học, giảng đường và sự kiện. Không cần cài đặt thư viện phụ thuộc ngoài (Zero Dependencies), nhẹ, bảo mật và sẵn sàng triển khai ngay lập tức.
 
 [![Node.js](https://img.shields.io/badge/Node.js-%3E%3D18.0.0-339933?logo=node.js&logoColor=white)](https://nodejs.org/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![License: Apache-2.0](https://img.shields.io/badge/License-Apache--2.0-blue.svg)](LICENSE)
 [![Dependencies](https://img.shields.io/badge/Dependencies-0%20npm%20packages-brightgreen)]()
 [![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?logo=docker&logoColor=white)](Dockerfile)
 [![Deploy](https://img.shields.io/badge/Deploy-Google%20AI%20Studio%20%2F%20Cloud%20Run-4285F4?logo=google-cloud&logoColor=white)]()
@@ -146,4 +146,4 @@ Hệ thống đã chuẩn bị sẵn tài khoản quản trị để trải nghi
 
 ## 📄 Bản quyền (License)
 
-Dự án được phân phối dưới giấy phép **MIT License**. Bạn được toàn quyền sử dụng, sửa đổi và triển khai cho mục đích học tập cũng như thương mại. Chi tiết xem tại file [LICENSE](LICENSE).
+Dự án được phân phối dưới giấy phép **Apache License 2.0**. Bạn được toàn quyền sử dụng, sửa đổi, phân phối cho mục đích học tập cũng như thương mại, kèm theo cơ chế bảo hộ bằng sáng chế rõ ràng. Chi tiết xem tại file [LICENSE](LICENSE).
